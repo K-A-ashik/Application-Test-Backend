@@ -15,6 +15,7 @@ typescript : 4.9.4
 - I also allowed option to edit the order data **inline** as well.
 - The passig the data between components are implemented in the **user form**
 - I have also implemented the custom toaster which is helpfull in showing alert notification. I have also use change detection strategy onPush.
+- Parent child comunication is done through the **@Input and @Output** also **service** is used send data.
 
 ## Frontend Test description 
 ###### I am using Jasmin and Karma as a testing tool for the frontend Angular.
