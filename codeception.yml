@@ -1,0 +1,22 @@
+namespace: orderUnitTest
+suites:
+    unit:
+        path: .
+
+settings:
+    shuffle: true
+    lint: true
+paths:
+    tests: tests
+    output: tests/_output
+    support: tests/_support
+    data: tests
+     
+actor: ApiTester
+modules:
+    enabled:
+        - REST:
+            url: http://localhost/backend-main
+            depends: PhpBrowser
+            part: json
+        # - \Helper\Api

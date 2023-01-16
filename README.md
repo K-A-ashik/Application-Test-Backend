@@ -1,39 +1,27 @@
-# Application-Test-Front
-###### This projects enables user to create, update and delete order's.
+# Application-Test-Back
+###### This projects will create, update and delete order's through API from backend.
 
-## Frontend :
-###### Fronted is writen using below technical specifications :  
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
-Node: 18.12.1  
-typescript : 4.9.4  
+## Backend :
+###### Backend is writen using below technical specifications :  
+PHP version 7.4
 
-- I have impletemented the Data table using **AG Grid**
-- **Order Edit** is available in inline and **Add** is available in **Modal**.
-- In angular service is impletemented with **GET, POST, PUT** And **DELETE** methods.
-- The response is returned as **json** and processed using **Observable**.
-- The data is read and displayed in the Ag Grid.
-- I also allowed option to edit the order data **inline** as well.
-- The passig the data between components are implemented in the **user form**
-- I have also implemented the custom toaster which is helpfull in showing alert notification. I have also use change detection strategy onPush.
+- I have implemented **RESTfull** API in the backend.
+- To **GET, ADD, UPDATE and DELETE** Order's.
+- In the root project you will find a file named **orders.php**.
+- Order.php act as an entry point to the Backend.
+- My backend endpoint is **[http://localhost/backend-main/orders](http://localhost/backend-main/orders)**.
+- Please adjust your **.htaccess** file accordingly.
+- For all the operations, the End Point is same. But differentiated based on the **HTTP Method**.
+- I have writtern explainatory comments in all the files.
+- I have used **OOPS**concept while developing this API.
 
-## Frontend Test description 
-###### I am using Jasmin and Karma as a testing tool for the frontend Angular.
-- There are **unit test** available in each component.
-- To test the service I have implemented the **mock service Unit Test** in api.service.spec.ts file.
-- I have also writen **Form Validation Unit Test** for the order form.
-- There are also unit test available for toast component and toast as a service.
+## Backend Test description 
+As requested I have implented testing using **Codeception** Tool.
+And I have implemented REST API testing.
 
-Run ```ng test``` to exicute the test. which will give you all the above mentioned test cases.
+- In project root you will find a folder named **test**. Inside that all the test cases are written.
+- Open ```tests/api/CreateOrderCest.php``` file.
+- You will find Four functions written for testing Four End Points.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Development server
-In console navigate to your project folder and run ```ng serve --open``` which will create a local server on the localhost with the default port number ```http://localhost:4200/```. The application will automatically reload if you change any of the source files.
-
-## Production server
-Run ```ng build``` which will create a build folder named ```dist/``` at the project root.
-
-## Further help
-To get more help on the Angular CLI use ```ng help``` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Testing commands
+Run ```php vendor/bin/codecept run api``` to run all the test cases.
