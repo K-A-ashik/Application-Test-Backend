@@ -1,21 +1,5 @@
-id,name,state,zip,amount,quantity,item
-6,Ashik,Karnataka,560093,15000,4,AG56JI
-7,Ashik,Karnataka,560093,15000,4,AG56JI
-8,Ashik,Karnataka,560093,15000,4,AG56JI
-9,Ashik,Karnataka,560093,15000,4,AG56JI
-11,Ashik,Karnataka,560093,15000,4,AG56JI
-13,Ashik,Karnataka,560093,15000,4,AG56JI
-14,Ashik,Karnataka,560093,15000,4,AG56JI
-15,Ashik,Karnataka,560093,15000,4,AG56JI
-16,Ashik,Karnataka,560093,15000,4,AG56JI
-17,Ashik,Karnataka,560093,15000,4,AG56JI
-18,Ashik,Karnataka,560093,15000,4,AG56JI
-19,Ashik,Karnataka,560093,15000,4,AG56JI
-20,Ashik,Karnataka,560093,15000,4,AG56JI
-21,Ashik,Karnataka,560093,15000,4,AG56JI
-22,Ashik,Karnataka,560093,15000,4,AG56JI
-23,Ashik,Karnataka,560093,15000,4,AG56JI
-24,Ashik,Karnataka,560093,15000,4,AG56JI
-25,Ashik,Karnataka,560093,15000,4,AG56JI
-26,Ashik,Karnataka,560093,15000,4,AG56JI
-27,Ashik,Karnataka,560093,15000,4,AG56JI
+id,name,state,zip,amount,qty,item
+1,"Liquid Saffron",NY,08998,25.43,7,XCD45300
+2,"Mostly Slugs",PA,19008,13.30,2,AAH6748
+3,"Jump Stain",CA,99388,56.00,3,MKII4400
+4,"Scheckled Sherlock",WA,88990,987.56,1,TR909

@@ -26,7 +26,7 @@ class CreateOrderCest
           'state' => 'Karnataka',
           'zip' => 560093,
           'amount' => 15000,
-          'quantity' => 4,
+          'qty' => 4,
           'item' => 'AG56JI'
         ]);
         $I->seeResponseCodeIsSuccessful();
@@ -44,7 +44,7 @@ class CreateOrderCest
           'state' => 'Tamilnadu',
           'zip' => 582256,
           'amount' => 15000,
-          'quantity' => 4,
+          'qty' => 4,
           'item' => 'AG56JI'
         ]);
         $I->seeResponseCodeIsSuccessful();

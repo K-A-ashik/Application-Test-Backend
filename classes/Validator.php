@@ -7,11 +7,11 @@
 class Validator
 {
     public function order_validation($post_data) {
-        $empty       = $this->_empty_fields($post_data, array('name', 'state', 'zip', 'amount', 'quantity', 'item'));
+        $empty       = $this->_empty_fields($post_data, array('name', 'state', 'zip', 'amount', 'qty', 'item'));
         $check_state = $this->_is_valid_string($post_data['state']);
         $check_zip   = $this->is_valid_number($post_data['zip']);
         $check_amnt  = $this->is_valid_number($post_data['amount']);
-        $check_qty   = $this->is_valid_number($post_data['quantity']);
+        $check_qty   = $this->is_valid_number($post_data['qty']);
         
         // checking empty fields
         if($empty != null) {

@@ -92,7 +92,7 @@ class OrderData extends Validator
             if($order_id) {
 
                 // Create the csv format order data.
-                $update_line = $order_id . "," . $order_data['name'] . "," . $order_data['state']. "," . $order_data['zip']. "," . $order_data['amount']. "," . $order_data['quantity']. "," . $order_data['item'];
+                $update_line = $order_id . "," . $order_data['name'] . "," . $order_data['state']. "," . $order_data['zip']. "," . $order_data['amount']. "," . $order_data['qty']. "," . $order_data['item'];
                 
                 $orders = file($this->_file);
                 $c = count($orders);

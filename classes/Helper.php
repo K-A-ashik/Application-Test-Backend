@@ -29,7 +29,7 @@ trait Helper {
 			2 => $data['state'],
 			3 => $data['zip'],
 			4 => $data['amount'],
-			5 => $data['quantity'],
+			5 => $data['qty'],
 			6 => $data['item']
 		];
 	}

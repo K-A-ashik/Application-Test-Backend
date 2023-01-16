@@ -1,4 +1,4 @@
-# Application-Test-Back
+# Application-Test-Backend
 ###### This projects will create, update and delete order's through API from backend.
 
 ## Backend :
@@ -13,7 +13,7 @@ PHP version 7.4
 - Please adjust your **.htaccess** file accordingly.
 - For all the operations, the End Point is same. But differentiated based on the **HTTP Method**.
 - I have writtern explainatory comments in all the files.
-- I have used **OOPS**concept while developing this API.
+- I have used **OOPS** concept while developing this API.
 
 ## Backend Test description 
 As requested I have implented testing using **Codeception** Tool.
