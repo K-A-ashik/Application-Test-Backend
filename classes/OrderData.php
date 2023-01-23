@@ -60,8 +60,15 @@ class OrderData extends Validator
     // This is used to create a new order
     public function addOrder($order_data)
     {
+        // Check unique items column
+        $unique_message = $this->isUnique($order_data);
+        if($unique_message) {
+            return $this->sendError($unique_message);
+        }
+
         // Validate the Order data
         $error_msg = $this->validateOrder($order_data);
+        
         if(!$error_msg) {
 
             // Get the incremental value from csv
@@ -93,6 +100,11 @@ class OrderData extends Validator
     // Used to update an order
     public function editOrder($order_data, $order_id)
     {
+        // Check unique items column
+        $unique_message = $this->isUnique($order_data);
+        if($unique_message) {
+            return $this->sendError($unique_message);
+        }
         // Validate the Order data
         $error_msg = $this->validateOrder($order_data);
 
@@ -170,7 +182,25 @@ class OrderData extends Validator
             return $this->sendError("Something went wrong! Please try again later.");
         }
     }
-        
+    
+    public function isUnique($data)
+    {
+        // Read through the file
+        $orders = $this->getFile();
+        $c = count($orders);
+        $i = 0;
+        $error_msg = '';
+        while( $i < $c) {
+            $t_array = explode(",", $orders[$i]);
+            // If the id matches replace the order row
+            if(trim($t_array[6]) == $data['item']) {
+                $error_msg = "Please enter unique value for item!";
+                break;
+            }
+            $i++;
+        }
+        return $error_msg;
+    }
 }
 
 ?>
