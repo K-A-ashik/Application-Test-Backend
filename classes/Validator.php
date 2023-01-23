@@ -6,60 +6,95 @@
  */
 class Validator
 {
-    public function order_validation($post_data) {
-        $empty       = $this->_empty_fields($post_data, array('name', 'state', 'zip', 'amount', 'qty', 'item'));
-        $check_state = $this->_is_valid_string($post_data['state']);
-        $check_zip   = $this->is_valid_number($post_data['zip']);
-        $check_amnt  = $this->is_valid_number($post_data['amount']);
-        $check_qty   = $this->is_valid_number($post_data['qty']);
-        
-        // checking empty fields
+    private $_order_data;
+    private $_headers = ['name', 'state', 'zip', 'amount', 'qty', 'item'];
+
+    public function validateOrder($post_data) {
+        // Check empty
+        $this->_order_data = $post_data;
+        $empty       = $this->empty_fields();
         if($empty != null) {
             return $empty;
         }
-        if (!$check_state) {
-            return 'Please provide correct state.';
+
+        // Accept only string
+        $is_string  = $this->check_string(['name', 'state']);
+        if($is_string != null) {
+            return $is_string;
         }
-        if (!$check_zip) {
-            return 'Zip should be only numbers.';
+
+        // Accept only string and number
+        $is_strnum  = $this->check_strnum(['item']);
+        if($is_strnum != null) {
+            return $is_strnum;
         }
-        if (!$check_amnt) {
-            return 'Amount should be only numbers.';
+        
+        $is_num   = $this->check_num(['zip', 'amount', 'qty']);
+        if($is_num != null) {
+            return $is_num;
         }
-        if (!$check_qty) {
-            return 'Quantity should be only numbers.';
-        }
+
+       
         return false;
     }
 
-    public function _empty_fields($data, $fields)
+    public function empty_fields()
     {
         $errMsg = null;
-        foreach ($fields as $value) {
-            if (empty($data[$value])) {
-                $errMsg .= "$value field is empty <br />";
+        foreach ($this->_headers as $col) {
+            if (empty($this->_order_data[$col])) {
+                $errMsg .= "$col field is empty <br />";
+            }
+            if($col == 'name' && strlen($this->_order_data[$col]) > 30) {
+                $errMsg .= "$col length should not be over 30 <br />";
+            } elseif($col == 'state' && strlen($this->_order_data[$col]) > 20) {
+                $errMsg .= "$col length should not be over 20 <br />";
+            } elseif($col == 'zip' && strlen($this->_order_data[$col]) != 6) {
+                $errMsg .= "$col length should be 6 <br />";
             }
         }
         
         return $errMsg;
     }
 
-    public function _is_valid_string($string)
+    public function check_string($fields)
     {
-        if (!preg_match("/^[a-zA-z]*$/", $string) ) {
-            return "Only alphabets and whitespace are allowed.";
+        $errMsg = null;
+        foreach ($fields as $col) {
+            if (!preg_match("/^[a-zA-z ]*$/", $this->_order_data[$col]) ) {
+                $errMsg .= "$col Field accepts only alphabets and whitespace.";
+            }
         }
 
-        return true;
+        return $errMsg;
+    }
+
+    public function check_strnum($fields)
+    {
+        $errMsg = null;
+        foreach ($fields as $col) {
+            if (!preg_match("/^[a-zA-Z0-9]+$/", $this->_order_data[$col]) ) {
+                $errMsg .= "$col Field accepts only alphabets and numbers.";
+            }
+        }
+
+        return $errMsg;
     }
     
-    public function is_valid_number($number)
+    public function check_num($fields)
     {
-        if(!is_numeric($number)) {
-            return "Only numeric value is allowed.";
+        $errMsg = null;
+        foreach ($fields as $col) {
+            if ($col == 'amount') {
+                if(!preg_match("/^([0-9]*[.])?[0-9]+$/", $this->_order_data[$col]) ) {
+                    $errMsg .= "$col Field accepts only numbers and float values.";
+                }
+            } elseif (!preg_match("/^[0-9]*$/", $this->_order_data[$col]) ) {
+                $errMsg .= "$col Field accepts only numbers.";
+            }
         }
 
-        return true;
+        return $errMsg;
     }
 }
 ?>
