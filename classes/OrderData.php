@@ -60,7 +60,6 @@ class OrderData extends Validator
     // This is used to create a new order
     public function addOrder($order_data)
     {
-        $order_data =  ['name' => 'HFI' ,'state' => 'kjjk' ,'zip' => '897899' ,'amount' => '545.25' ,'qty' => '56' ,'item' => '56456SDE'];
         // Validate the Order data
         $error_msg = $this->validateOrder($order_data);
         if(!$error_msg) {
