@@ -9,9 +9,12 @@ class Validator
     private $_order_data;
     private $_headers = ['name', 'state', 'zip', 'amount', 'qty', 'item'];
 
+    // this is a brief validation on validateOrder function.
     public function validateOrder($post_data) {
-        // Check empty
+        // We assign order data to the global object
         $this->_order_data = $post_data;
+
+        // Check if empty for all field is empty or not
         $empty       = $this->empty_fields();
         if($empty != null) {
             return $empty;
@@ -29,6 +32,7 @@ class Validator
             return $is_strnum;
         }
         
+        // Accept only number
         $is_num   = $this->check_num(['zip', 'amount', 'qty']);
         if($is_num != null) {
             return $is_num;
